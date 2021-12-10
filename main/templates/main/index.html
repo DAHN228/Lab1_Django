@@ -1,0 +1,34 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block content %}
+    <h1>Лабораторная работа №1</h1>
+    <h4>Вариант 3</h4>
+    <p>Разместите на странице три кнопки (Button) и одно поле ввода (TextBox).
+        Сделайте на кнопках следующие надписи: «скрыть», «показать», «очистить».
+        Создайте обработчики события нажатия на данные кнопки, которые будут скрывать или показывать поле ввода.
+        При нажатии на кнопку «очистить» текст из поля ввода должен быть удален.
+    </p>
+    <form id="text" method="POST">
+         {% csrf_token %}
+        <table>
+         {{ form }}
+        </table>
+        <input type="reset" class="btn btn-outline-danger" style="margin-bottom: 5px; margin-top: 5px" value="Очистить">
+    </form>
+    <input type="button" class="btn btn-outline-dark" id="hider" value="Скрыть">
+    <input type="button" class="btn btn-outline-info" id="shower" value="Показать">
+    <script>
+     document.getElementById('hider').onclick = function() {
+         document.getElementById('text').hidden = true;
+     }
+     document.getElementById('shower').onclick = function() {
+         document.getElementById('text').hidden = false;
+     }
+    </script>
+
+
+{% endblock %}
